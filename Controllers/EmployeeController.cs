@@ -8,7 +8,7 @@ namespace BurulasWebApi.Controllers
     [Route("api/employee")]
     public class EmployeeController : ControllerBase
     {
-        //[HttpGet("GetList")]
+        [HttpGet()]
         public async Task<ActionResult<ListResponse<Models.Employee>>> GetList()
         {
             var employees = await Task.FromResult(EmployeeService.Instance.GetList());
