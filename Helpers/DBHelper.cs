@@ -13,7 +13,7 @@ namespace BurulasWebApi.Helpers
                 {
                     return "Server=ECDTRM01;Database=BURULASEGITIMAPI;User Id=sa;Password=123456;Integrated Security=SSPI;TrustServerCertificate=True;";
                 }
-                return "Server=ECDTRM01;Database=BURULASEGITIMAPI;User Id=sa;Password=123456;Integrated Security=SSPI;TrustServerCertificate=True;";
+                return "Server=10.100.10.180;Database=BURULASEGITIMAPI;Integrated Security=SSPI;TrustServerCertificate=True;"; 
             }
         }
         public static T GetQuery<T>(string _sql, object _prms = null)
