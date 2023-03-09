@@ -5,7 +5,7 @@ namespace BurulasWebApi.Helpers
 {
     public static class DBHelper
     {
-        private static String ConnectionString = "";
+        private static String ConnectionString = "Server=.;Database=BURULASEGITIMAPI;Trusted_Connection=True;";
         public static T GetQuery<T>(string _sql, object _prms = null)
         {
             using (var con = new SqlConnection(ConnectionString))
