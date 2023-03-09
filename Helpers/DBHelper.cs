@@ -9,7 +9,7 @@ namespace BurulasWebApi.Helpers
         {
             get
             {
-                if (Environment.MachineName == "ECDTRMO1")
+                if (Environment.MachineName == "ECDTRM01")
                 {
                     return "Server=ECDTRM01;Database=BURULASEGITIMAPI;User Id=sa;Password=123456;Integrated Security=SSPI;TrustServerCertificate=True;";
                 }
@@ -24,6 +24,25 @@ namespace BurulasWebApi.Helpers
                 {
                     con.Open();
                     return con.Query<T>(_sql, _prms).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+        }
+        public static void Execute(string _sql, object _prms = null)
+        {
+            using (var con = new SqlConnection(ConnectionString))
+            {
+                try
+                {
+                    con.Open();
+                    con.Execute(_sql, _prms);
                 }
                 catch (Exception ex)
                 {

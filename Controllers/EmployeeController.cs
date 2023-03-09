@@ -40,5 +40,17 @@ namespace BurulasWebApi.Controllers
             }
             return employees;
         }
+
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<StandardResponse<bool>>> Delete(int id)
+        {
+            var employees = await Task.FromResult(EmployeeService.Instance.Delete(id));
+            if (employees == null)
+            {
+                return NotFound();
+            }
+            return employees;
+        }
     }
 }

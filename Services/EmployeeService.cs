@@ -20,6 +20,13 @@ namespace BurulasWebApi.Services
             result.Status = true;
             return result;
         }
+        public StandardResponse<bool> Delete(int id)
+        {
+            var result = new StandardResponse<bool>();
+            DBHelper.Execute("delete from Employee where EmployeeID=@ID", new { ID = id });
+            result.Status = true;
+            return result;
+        }
         public StandardResponse<Employee> Add(Employee item)
         {
             var result = new StandardResponse<Employee>();
