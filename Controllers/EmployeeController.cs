@@ -1,9 +1,11 @@
 ﻿using BurulasWebApi.Models;
 using BurulasWebApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BurulasWebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/employee")]
     public class EmployeeController : ControllerBase
