@@ -11,7 +11,7 @@
         public String Message { get; set; }
         public String ErrorMessage { get; set; }
         public String RequestMessage { get; set; }
-        public Exception Error { get; set; }
+        //public Exception Error { get; set; }
     }
 
     public class StandardResponse<T> : BaseResponse

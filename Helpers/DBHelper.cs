@@ -5,14 +5,24 @@ namespace BurulasWebApi.Helpers
 {
     public static class DBHelper
     {
-        private static String ConnectionString = "Server=.;Database=BURULASEGITIMAPI;Trusted_Connection=True;";
+        private static String ConnectionString
+        {
+            get
+            {
+                if (Environment.MachineName == "ECDTRMO1")
+                {
+                    return "Server=ECDTRM01;Database=BURULASEGITIMAPI;User Id=sa;Password=123456;Integrated Security=SSPI;TrustServerCertificate=True;";
+                }
+                return "Server=ECDTRM01;Database=BURULASEGITIMAPI;User Id=sa;Password=123456;Integrated Security=SSPI;TrustServerCertificate=True;";
+            }
+        }
         public static T GetQuery<T>(string _sql, object _prms = null)
         {
             using (var con = new SqlConnection(ConnectionString))
             {
-                con.Open();
                 try
                 {
+                    con.Open();
                     return con.Query<T>(_sql, _prms).FirstOrDefault();
                 }
                 catch (Exception ex)
@@ -29,9 +39,9 @@ namespace BurulasWebApi.Helpers
         {
             using (var con = new SqlConnection(ConnectionString))
             {
-                con.Open();
                 try
                 {
+                    con.Open();
                     return con.Query<T>(_sql, _prms).ToList();
                 }
                 catch (Exception ex)

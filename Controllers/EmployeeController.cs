@@ -18,12 +18,5 @@ namespace BurulasWebApi.Controllers
             }
             return employees;
         }
-
-
-        [HttpGet("Test")]
-        public string Test()
-        {
-            return "Test";
-        }
     }
 }
