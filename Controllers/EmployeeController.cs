@@ -52,5 +52,18 @@ namespace BurulasWebApi.Controllers
             }
             return employees;
         }
+
+
+
+        [HttpPut]
+        public async Task<ActionResult<StandardResponse<Models.Employee>>> Put(Employee employee)
+        {
+            var employees = await Task.FromResult(EmployeeService.Instance.Put(employee));
+            if (employees == null)
+            {
+                return NotFound();
+            }
+            return employees;
+        }
     }
 }

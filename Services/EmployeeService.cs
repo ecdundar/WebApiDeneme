@@ -34,5 +34,12 @@ namespace BurulasWebApi.Services
             result.Status = true;
             return result;
         }
+        public StandardResponse<Employee> Put(Employee item)
+        {
+            var result = new StandardResponse<Employee>();
+            DBHelper.Execute("update Employee set NationalIDNumber=@NationalIDNumber,EmployeeName=@EmployeeName,LoginID=@LoginID,JobTitle=@JobTitle,BirthDate=@BirthDate,MaritalStatus=@MaritalStatus,Gender=@Gender,HireDate=@HireDate,VacationHours=@VacationHours,SickLeaveHours=@SickLeaveHours,rowguid=@rowguid,ModifiedDate=@ModifiedDate where EmployeeID=@EmployeeID", item);
+            result.Status = true;
+            return result;
+        }
     }
 }
