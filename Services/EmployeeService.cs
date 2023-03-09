@@ -20,5 +20,12 @@ namespace BurulasWebApi.Services
             result.Status = true;
             return result;
         }
+        public StandardResponse<Employee> Add(Employee item)
+        {
+            var result = new StandardResponse<Employee>();
+            result.Data = DBHelper.GetQuery<Employee>("insert into Employee(NationalIDNumber,EmployeeName,LoginID,JobTitle,BirthDate,MaritalStatus,Gender,HireDate,VacationHours,SickLeaveHours,rowguid,ModifiedDate) values(@NationalIDNumber,@EmployeeName,@LoginID,@JobTitle,@BirthDate,@MaritalStatus,@Gender,@HireDate,@VacationHours,@SickLeaveHours,@rowguid,@ModifiedDate)", item);
+            result.Status = true;
+            return result;
+        }
     }
 }
